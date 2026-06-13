@@ -6,191 +6,268 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gashena Foreign Employment Agent</title>
     <style>
+        /* Modern Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2b6cb0;
-            --accent-color: #d69e2e;
-            --text-color: #2d3748;
-            --bg-light: #f7fafc;
+            --primary: #0F52BA; /* Trustworthy Blue */
+            --secondary: #2E8B57; /* Success Green */
+            --dark: #222222;
+            --light: #F9F9F9;
+            --gold: #D4AF37;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            background-color: var(--bg-light);
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
         }
 
+        /* Header & Navigation */
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 1rem;
+            background: white;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 82, 186, 0.85), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1521737711867-e3b904737a88?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            border-bottom: 4px solid var(--accent-color);
+            color: white;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #22653e;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 1px;
+        /* License / Credential Badge Section */
+        .license-banner {
+            background-color: #fff3cd;
+            border-left: 5px solid var(--gold);
+            padding: 20px 10%;
+            margin: 30px auto;
+            max-width: 80%;
+            border-radius: 4px;
+        }
+        .license-banner h3 {
+            color: #856404;
+            margin-bottom: 8px;
         }
 
-        header p {
-            margin: 0.5rem 0 0 0;
-            font-size: 1.1rem;
-            color: #e2e8f0;
-        }
-
+        /* Main Content / Details */
         .container {
-            max-width: 1000px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .grid {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 2rem;
+            gap: 40px;
         }
 
         @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
+            .container { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 32px; }
         }
 
         .card {
             background: white;
-            padding: 2rem;
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid var(--secondary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
         }
 
-        h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            border-bottom: 2px solid #edf2f7;
-            padding-bottom: 0.5rem;
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
         }
 
-        .info-item {
-            margin-bottom: 1.2rem;
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .info-label {
+        .info-item label {
             font-weight: bold;
-            color: var(--secondary-color);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
+            color: #666;
+            display: block;
+            font-size: 14px;
+        }
+        .info-item p {
+            font-size: 18px;
+            color: var(--dark);
         }
 
-        .info-value {
-            font-size: 1.1rem;
-            margin-top: 0.2rem;
-        }
-
-        .destination-badge {
-            display: inline-block;
-            background-color: #feebc8;
-            color: #c05621;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .contact-bar {
-            background-color: #edf2f7;
-            padding: 1rem;
-            border-radius: 6px;
-            margin-top: 2rem;
+        /* Destination Highlight */
+        .destination-box {
+            background: var(--primary);
+            color: white;
             text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .destination-box h2 {
+            font-size: 32px;
+            margin-top: 10px;
         }
 
-        .contact-bar a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .contact-bar a:hover {
-            text-decoration: underline;
-        }
-
+        /* Footer */
         footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
+            background: var(--dark);
+            color: white;
             text-align: center;
-            padding: 1.5rem 1rem;
-            margin-top: 5rem;
-            font-size: 0.9rem;
+            padding: 30px;
+            margin-top: 60px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <h1>GASHENA FOREIGN EMPLOYMENT AGENT</h1>
-        <p>Ministry of Labor and Skills Certified Private Employment Agency</p>
+        <div class="logo">GASHENA</div>
+        <nav>
+            <a href="#about">About Us</a>
+            <a href="#license">Verification</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
-    <div class="container">
-        <div class="grid"> 
-                <div class="info-item">
-                    <div class="info-label">Company Name</div>
-                    <div class="info-value">Gashena Foreign Employment Agent</div>
-                <div class="info-item">
-                    <div class="info-label">Owner / General Manager</div>
-                    <div class="info-value">Jbril Yasin</div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>GASHENA FOREIGN EMPLOYMENT AGENT</h1>
+        <p>Your trusted, fully licensed partner for overseas employment opportunities in Saudi Arabia.</p>
+        <a href="mailto:gashena02@gmail.com" class="btn">Get In Touch</a>
+    </section>
 
-                <div class="info-item">
-                    <div class="info-label">Official License Number</div>
-                    <div class="info-value" style="font-family: monospace; font-size: 1.2rem; color: var(--accent-color); font-weight: bold;">
-                        LIC0000004880
+    <!-- Legal Compliance Banner -->
+    <div class="license-banner" id="license">
+        <h3>📢 Legal Notice & Verification</h3>
+        <p>በኢትዮጵያ የውጪ አገር ሥራ ሥምሪት አዋጅ ቁጥር 923/2008 እና 1246/2013 መሰረት የተሰጠ የብቃት ማረጋገጫ ፈቃድ።</p>
+        <p>Certified & Licensed Private Employment Agency operating under Ethiopia's Overseas Employment Proclamations No. 923/2016 and 1246/2021.</p>
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="container">
+        
+        <!-- Left Side: Agency Details -->
+        <div>
+            <div class="card" id="about">
+                <h2>Agency Credentials & Profile</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>License Number / የፈቃድ ቁ</label>
+                        <p><strong>LIC0000004880</strong></p>
+                    </div>
+                    <div class="info-item">
+                        <label>Agency Manager / Owner</label>
+                        <p>JBRIL Yasin</p>
+                    </div>
+                    <div class="info-item">
+                        <label>Region</label>
+                        <p>Addis Ababa</p>
+                    </div>
+                    <div class="info-item">
+                        <label>Zone / Sub-City</label>
+                        <p>Arada</p>
+                    </div>
+                    <div class="info-item">
+                        <label>Woreda</label>
+                        <p>Woreda 2</p>
                     </div>
                 </div>
             </div>
-
-            <div class="card">
-                <h2>Authorized Destination</h2>
-                <p>We are fully authorized by the Federal Democratic Republic of Ethiopia's Ministry of Labor and Skills to provide employment services for:</p>
-                <div class="destination-badge">
-                    🇸🇦 Saudi Arabia
-                </div>
-            </div>
-
         </div>
 
-        <div class="card" style="margin-top: 2rem;">
-            <h2>Contact & Location Information</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
-                <div class="info-item">
-                    <div class="info-label">Sub-City / Woreda</div>
-                    <div class="info-value">Woreda 2</div>
+        <!-- Right Side: Destination & Quick Contact -->
+        <div>
+            <div class="destination-box">
+                <p>OFFICIAL DESTINATION COUNTRY</p>
+                <h2>Saudi Arabia 🇸🇦</h2>
+            </div>
+            
+            <div class="card" id="contact" style="margin-top: 20px;">
+                <h2>Contact Agency</h2>
+                <div class="info-item" style="margin-bottom: 15px;">
+                    <label>Email Address</label>
+                    <p><a href="mailto:gashena02@gmail.com" style="color: var(--primary); text-decoration: none;">gashena02@gmail.com</a></p>
                 </div>
                 <div class="info-item">
-                    <div class="info-label">Phone Number</div>
-                    <div class="info-value">+999 24046147</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Email Address</div>
-                    <div class="info-value"><a href="mailto:gashena02@gmail.com" style="color: var(--secondary-color); text-decoration: none;">gashena02@gmail.com</a></div>
+                    <label>Phone Number</label>
+                    <p>+999 24046147</p>
                 </div>
             </div>
         </div>
+
     </div>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Gashena Foreign Employment Agent. All Rights Reserved.</p>
+        <p>&copy; 2026 GASHENA FOREIGN EMPLOYMENT AGENT. All Rights Reserved.</p>
+        <p style="font-size: 11px; color: #888; margin-top: 5px;">Regulated under Ethiopian Overseas Employment Proclamations.</p>
     </footer>
 
 </body>
 </html>
 
 ```
+
+### Features included in this code:
+
+* **Trust Signals:** Clearly presents your official license number (`LIC0000004880`) and legal proclamation numbers right at the top so clients know you are a legitimate business.
+* **Clear Call to Actions:** Buttons automatically link to your email (`gashena02@gmail.com`) so applicants can message you immediately.
+* **Clean Design:** Uses a corporate blue and green palette symbolizing security and growth.
